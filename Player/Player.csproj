@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+	<UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="1.jpg" />
+    <None Remove="71eLqPemDvS._AC_SL1500_.jpg" />
+    <None Remove="73527.png" />
+    <None Remove="ab67616d0000b2738399047ff71200928f5b6508 - Copy.jfif" />
+    <None Remove="icno8.png" />
+    <None Remove="Matrix1.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
+    <PackageReference Include="XamlAnimatedGif" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="1.jpg" />
+    <Resource Include="71eLqPemDvS._AC_SL1500_.jpg" />
+    <Resource Include="ab67616d0000b2738399047ff71200928f5b6508 - Copy.jfif" />
+    <Resource Include="icno8.png" />
+    <Resource Include="Matrix1.gif" />
+  </ItemGroup>
+
+</Project>

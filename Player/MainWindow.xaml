@@ -1,0 +1,101 @@
+﻿<Window x:Class="Player.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Player"
+        mc:Ignorable="d"
+        Title="MediaPlayer"
+        Width="450" WindowStyle = "None" Style="{StaticResource WindowStyle}" Height="525"  AllowsTransparency="True" MouseDown="Window_MouseDown" Icon="/icno8.png"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com">
+
+    <Grid MouseWheel="Grid_MouseWheel" >
+        <Grid.Background>
+            <ImageBrush/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Image Source="/icons8-музыкальный-24.png" HorizontalAlignment="Left"/>
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Column="1">
+            <Button x:Name="Maximize" Content="⬜" Width="20"  Height="20" Style="{StaticResource ButtonPlayListStyle}" Click="Maximize_Click"/>
+            <Button x:Name="ButtonHide" Content="-" Width="20" Height="20" Click="ButtonHide_Click" Style="{StaticResource ButtonPlayListStyle}"/>
+            <Button x:Name="ButtonClose" Content="❎" Width="20" Height="20" Click="ButtonClose_Click" Style="{StaticResource ButtonPlayListStyle}"/>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="0.1*"/>
+            </Grid.RowDefinitions>
+
+            <ListBox x:Name="trackList" Style="{StaticResource ListBoxStyle}" MouseDoubleClick="trackList_MouseDoubleClick" SelectionChanged="trackList_SelectionChanged" FontSize="15"/>
+            <UniformGrid Grid.Row="1" Rows="1">
+                <Button x:Name="Add"  Content="Add" Style="{StaticResource ButtonPlayListStyle}" Click="Add_Click"/>
+                <Button x:Name="Del" Content="Del" Style="{StaticResource ButtonPlayListStyle}" Click="Del_Click" />
+                <Button x:Name="Save" Content="Save" Style="{StaticResource ButtonPlayListStyle}" Click="Save_Click"/>
+                <Button x:Name="Load" Content="Load" Style="{StaticResource ButtonPlayListStyle}" Click="Load_Click"/>
+                <Button x:Name="Clear" Content="Clear" Style="{StaticResource ButtonPlayListStyle}" Click="Clear_Click"/>
+                <Button x:Name="Random" Content="Rnd" Style="{StaticResource ButtonPlayListStyle}" Click="Random_Click"/>
+            </UniformGrid>
+        </Grid>
+
+        <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource BorderStyle}">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel>
+                    <Image x:Name="Gif" Grid.Column="1" Source="/71eLqPemDvS._AC_SL1500_.jpg" />
+                </StackPanel>
+                <Border Grid.Row="1" Style="{StaticResource BorderStyle}">
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="0.25*"/>
+                    </Grid.ColumnDefinitions>
+                    <Slider x:Name="Volume" Maximum="1" SmallChange="0.01" VerticalAlignment="Center" Margin="10,0,0,0" Value="{Binding ElementName=mePlayer, Path=Volume}" ValueChanged="Volume_ValueChanged" LargeChange="0.1"/>
+                    <TextBlock x:Name="VolumeTB" Text="100%"  Style="{StaticResource TextBlockStyle}" Grid.Column="1"/>
+                </Grid>
+            </Border>
+            <Border Grid.Row="2" Style="{StaticResource BorderStyle}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.42*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="0.42*"/>
+                        </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="PassedTimeTB" Text="00:00:00" Style="{StaticResource TextBlockStyle}"/>
+                    <ProgressBar x:Name="TimerProgressBar" Style="{StaticResource ProgressBarStyle}" ValueChanged="TimerProgressBar_ValueChanged" Grid.Column="1" MouseDown="TimerProgressBar_MouseDown" />
+                    <TextBlock Grid.Column="2" x:Name="TotalTimeTB" Text="00:00:00" Style="{StaticResource TextBlockStyle}"/>
+                </Grid>
+            </Border>
+            <UniformGrid Grid.Row="3" Rows="2">
+                <Button x:Name="Play" Content="◄" Style="{StaticResource ButonStyle}" Click="Play_Click"/>
+                <Button x:Name="Pause" Content="▐▐ " Style="{StaticResource ButonStyle}" Click="Pause_Click"/>
+                <Button x:Name="Stop" Content="🛑" Style="{StaticResource ButonStyle}" Click="Stop_Click"/>
+                <Button x:Name="Prev" Content="II◄" Style="{StaticResource ButonStyle}" Click="Prev_Click"/>
+                <Button x:Name="Next" Content="►II" Style="{StaticResource ButonStyle}" Click="Next_Click"/>
+                <Button x:Name="Repeat" Content="🔁" Style="{StaticResource ButonStyle}" Click="Repeat_Click"/>
+
+            </UniformGrid>
+            <Border Grid.Row="4" Style="{StaticResource BorderStyle}">
+                <UniformGrid Grid.Row="4" Rows="4">
+                    <TextBlock x:Name="Autor" Text="Autor: NIRVANA" Style="{StaticResource TextBlockStyle}"/>
+                    <TextBlock x:Name="Name" Text="Name: Heart Shaped Box" Style="{StaticResource TextBlockStyle}"/>
+                    <TextBlock x:Name="Info" Text="Info: rock song of the Nirvana" Style="{StaticResource TextBlockStyle}"/>
+
+                </UniformGrid>
+            </Border>
+        </Grid>
+    </Border>
+    </Grid>
+</Window>
